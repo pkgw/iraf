@@ -7,7 +7,6 @@ export HOST_CURL=1
 export HOST_READLINE=1
 export HOST_EXPAT=1
 export HOST_CFITSIO=1
-export HOST_XMLRPC=1
 export IRAFARCH=`${hlib}irafarch.csh`
 
 rm -rf vo/votools/.old
