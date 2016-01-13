@@ -147,18 +147,18 @@ define	read	xfread
 define	realloc	xrealc
 define	seek	xfseek
 define	sizeof	xsizef
-define	strcat	xstrct
-define	strcmp	xstrcp
-define	strcpy	xstrcy
-define	strlen	xstrln
+## define	strcat	xstrct
+## define	strcmp	xstrcp
+## define	strcpy	xstrcy
+## define	strlen	xstrln
 define	ungetc	xfungc
 define	write	xfwrie
 define  fatal   xfatal
 define  fchdir  xfchdr
 define  fscan   xfscan
-define  getopt  xgtopt
+## define  getopt  xgtopt
 define  getpid  xgtpid
 define  getuid  xgtuid
 define  rename  xfrnam
 define  reset   xreset
-define  scan    xxscan
+## define  scan    xxscan
