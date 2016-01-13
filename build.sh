@@ -8,7 +8,7 @@ export HOST_READLINE=1
 export HOST_EXPAT=1
 export HOST_CFITSIO=1
 export IRAFARCH=`${hlib}irafarch.csh`
-export F2C=${host}/f2c/src/f2c
+export F2C=${iraf}${host}f2c/src/f2c
 
 rm -rf vo/votools/.old
 rm -rf vo/votools/.url*
@@ -26,7 +26,7 @@ find -name "*.a" | xargs rm -f
 
 cp unix/boot/spp/xc.c unix/boot/spp/xc.c.orig
 sed -e "s|@EXTRA_LDFLAG@|$(pkg-config --libs-only-L cfitsio)|g" \
-   -e "s|@F2C_LIB@|$host/f2c/libf2c/libf2c.a|g" \
+   -e "s|@F2C_LIB@|${iraf}${host}f2c/libf2c/libf2c.a|g" \
    <unix/boot/spp/xc.c.orig >unix/boot/spp/xc.c
 
 (cd unix/f2c/src && make -f makefile.u)
