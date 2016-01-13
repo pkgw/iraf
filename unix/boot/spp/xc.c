@@ -74,15 +74,15 @@
 #endif
 
 #ifdef LINUX
-char *fortlib[] = { "-lf2c",			/*  0  (host progs) */
-		    "-lf2c",			/*  1  */
+char *fortlib[] = { "@F2C_LIB@",			/*  0  (host progs) */
+		    "@F2C_LIB@",			/*  1  */
 		    "-lm",			/*  2  */
 #ifndef LINUXPPC
 #ifndef LINUX64
 		    "",				/*  3  -lcompat */
 #endif
 #else
-		    "-lg2c",			/*  3  */
+		    "@F2C_LIB@",			/*  3  */
 #endif
 		    "-lpthread",		/*  4  */
 		    "-lm",			/*  5  */
@@ -98,8 +98,8 @@ int  nopt_flags	   = 1;				/* No. optimizer flags */
 
 #else
 #ifdef BSD
-char *fortlib[] = { "-lf2c",			/*  0  (host progs) */
-		    "-lf2c",			/*  1  */
+char *fortlib[] = { "@F2C_LIB@",			/*  0  (host progs) */
+		    "@F2C_LIB@",			/*  1  */
 		    "-lm",			/*  2  */
 		    "-lcompat",			/*  3  */
 		    "",				/*  4  */
@@ -116,8 +116,8 @@ int  nopt_flags	   = 1;				/* No. optimizer flags */
 
 #else
 #ifdef MACOSX
-char *fortlib[] = { "-lf2c",			/*  0  (host progs) */
-		    "-lf2c",			/*  1  */
+char *fortlib[] = { "@F2C_LIB@",			/*  0  (host progs) */
+		    "@F2C_LIB@",			/*  1  */
 		    "-lm",			/*  2  */
 		    "",				/*  3  */
 		    "",				/*  4  */
@@ -140,8 +140,8 @@ int  nopt_flags	   = 0;				/* No. optimizer flags */
 
 #else
 #ifdef SOLARIS
-char *fortlib[] = { "-lf2c",			/*  0  (host progs) */
-		    "-lf2c",			/*  1  */
+char *fortlib[] = { "@F2C_LIB@",			/*  0  (host progs) */
+		    "@F2C_LIB@",			/*  1  */
 		    "-lm",			/*  2  */
 		    "-lsocket",			/*  3  */
 		    "-lnsl",			/*  4  */
@@ -158,8 +158,8 @@ int  nopt_flags	   = 1;				/* No. optimizer flags */
 
 #else
 #ifdef CYGWIN
-char *fortlib[] = { "-lf2c",			/*  0  (host progs) */
-		    "-lf2c",			/*  1  */
+char *fortlib[] = { "@F2C_LIB@",			/*  0  (host progs) */
+		    "@F2C_LIB@",			/*  1  */
 		    "-lm",			/*  2  */
 		    "-lcompat",			/*  3  */
 		    "",				/*  4  */
@@ -741,7 +741,7 @@ passflag:		    mkobject = YES;
 	 * hlib$f77.sh the fortran compiler script on that system.
 	 */
 	if (useg2c || strncmp (f77comp, "g77", 3) == 0) {
-	    fortlib[0] = fortlib[1] = "-lg2c";
+	    fortlib[0] = fortlib[1] = "@F2C_LIB@";
 	}
 
 
@@ -1203,6 +1203,7 @@ passflag:		    mkobject = YES;
 	    arglist[nargs++] = mkfname (LIBMAIN);
 
 	arglist[nargs++] = "-L@CONDA_LIBDIR@";
+	arglist[nargs++] = "-lm";
 
 	if (voslibs) {
 	    if (usesharelib) {

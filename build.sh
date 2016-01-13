@@ -23,6 +23,11 @@ popd
 
 find -name "*.a" | xargs rm -f
 
+cp unix/boot/spp/xc.c unix/boot/spp/xc.c.orig
+sed -e "s|@CONDA_LDFLAG@|$(pkg-config --libs-only-L cfitsio)|g" \
+   -e "s|@F2C_LIB@|$host/f2c/libf2c/libf2c.a|g" \
+   <unix/boot/spp/xc.c.orig >unix/boot/spp/xc.c
+
 (cd unix/f2c/src && make -f makefile.u)
 (cd unix/f2c/libf2c && make -f makefile.u)
 export F2C=$(pwd)/unix/f2c/src/f2c
@@ -40,7 +45,7 @@ unset NOVOS
 export pkglibs=${iraf}noao/lib/,${iraf}${host}/bin/,${iraf}${host}/hlib/
 pushd vendor/voclient
 make clean
-make mylib 
+make mylib
 cp libvo/libVO.a ${iraf}lib
 popd
 
