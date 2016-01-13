@@ -25,7 +25,7 @@ popd
 find -name "*.a" | xargs rm -f
 
 cp unix/boot/spp/xc.c unix/boot/spp/xc.c.orig
-ldflag=$(pkg-config --libs-only-L cfitsio)
+ldflag=$(echo $(pkg-config --libs-only-L cfitsio)) # nesting to remove trailing spaces
 sed -e "s|@EXTRA_LDFLAG@|$ldflag|g" \
    -e "s|@F2C_LIB@|${iraf}${host}f2c/libf2c/libf2c.a|g" \
    <unix/boot/spp/xc.c.orig >unix/boot/spp/xc.c
