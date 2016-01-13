@@ -135,7 +135,11 @@ if ($?IRAFARCH) then
     setenv IRAFBIN ${iraf}bin$arch/
     set file = ${IRAFBIN}$cl_binary
     if (-e $file) then
-	exec $file
+	if ($?IRAF_WRAPPER) then
+	    exec $IRAF_WRAPPER $file
+	else
+	    exec $file
+	endif
     else
 	echo "$file not found"
     endif
@@ -149,5 +153,9 @@ setenv IRAFARCH   $MACH
 setenv arch 	.$IRAFARCH
 setenv IRAFBIN 	${iraf}bin$arch/
 
-# Run the desired CL.
-exec  ${IRAFBIN}$cl_binary
+# Run the desired CL
+if ($?IRAF_WRAPPER) then
+    exec $IRAF_WRAPPER ${IRAFBIN}$cl_binary
+else
+    exec ${IRAFBIN}$cl_binary
+endif
