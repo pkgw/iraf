@@ -11,15 +11,15 @@ fi
 set -x
 export IRAFARCH="$1"
 export iraf=$(pwd)/
-export host=unix/
-export hlib=${iraf}${host}hlib/
-export PATH=$PATH:${iraf}${host}"/bin/"
-export pkglibs=${iraf}noao/lib/,${iraf}${host}hlib/libc/,${iraf}${host}bin/
+export host=${iraf}unix/
+export hlib=${host}hlib/
+export PATH=$PATH:${host}"/bin/"
+export pkglibs=${iraf}noao/lib/,${host}hlib/libc/,${host}bin/
 export HOST_CURL=1
 export HOST_READLINE=1
 export HOST_EXPAT=1
 export HOST_CFITSIO=1
-export F2C=${iraf}${host}f2c/src/f2c
+export F2C=${host}f2c/src/f2c
 
 rm -rf vo/votools/.old
 rm -rf vo/votools/.url*
@@ -38,7 +38,7 @@ find -name "*.a" | xargs rm -f
 cp unix/boot/spp/xc.c unix/boot/spp/xc.c.orig
 ldflag=$(echo $(pkg-config --libs-only-L cfitsio)) # nesting to remove trailing spaces
 sed -e "s|@EXTRA_LDFLAG@|$ldflag|g" \
-   -e "s|@F2C_LIB@|${iraf}${host}f2c/libf2c/libf2c.a|g" \
+   -e "s|@F2C_LIB@|${host}f2c/libf2c/libf2c.a|g" \
    <unix/boot/spp/xc.c.orig >unix/boot/spp/xc.c
 
 (cd unix/f2c/src && make -f makefile.u)
@@ -49,29 +49,28 @@ ${iraf}util/mkarch $IRAFARCH
 
 export NOVOS=1
 pushd vendor/voclient
-make mylib
+make fresh_libvo
 cp libvo/libVO.a ${iraf}lib
 popd
 
 ${iraf}util/mksysnovos
 
 unset NOVOS
-export pkglibs=${iraf}noao/lib/,${iraf}${host}bin/,${iraf}${host}hlib/
+export pkglibs=${iraf}noao/lib/,${host}bin/,${host}hlib/
 pushd vendor/voclient
-make clean
-make mylib
+make fresh_libvo
 cp libvo/libVO.a ${iraf}lib
 popd
 
-export pkglibs=${iraf}noao/lib/,${iraf}${host}bin/,${iraf}${host}hlib/libc/
+export pkglibs=${iraf}noao/lib/,${host}bin/,${host}hlib/libc/
 ${iraf}util/mksysvos
 sed -i ${host}hlib/mkiraf.csh -e s!/iraf/iraf!%{_libdir}/iraf!g
-cp ${iraf}${host}bin/*.a ${iraf}lib
+cp ${host}bin/*.a ${iraf}lib
 rm pkg/utilities/nttools/xx_nttools.e
 
 cd %{_builddir}/x11-iraf
 rm ximtool/clients/x_ism.o
 xmkmf
 
-export PATH=$PATH:"${iraf}${host}bin/"
+export PATH=$PATH:"${host}bin/"
 ${iraf}util/mksysgen
