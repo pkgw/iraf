@@ -33,7 +33,7 @@ use or performance of this software.
 				   pool */
 #define MAXCTL 20
 #define MAXHASH 802
-#define MAXSTNO 801
+#define MAXSTNO 2048
 #define MAXEXT 400
 #define MAXEQUIV 300
 #define MAXLABLIST 258		/* Max number of labels in an alternate
