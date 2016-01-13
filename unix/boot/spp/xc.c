@@ -1202,6 +1202,8 @@ passflag:		    mkobject = YES;
 	} else
 	    arglist[nargs++] = mkfname (LIBMAIN);
 
+	arglist[nargs++] = "-L@CONDA_LIBDIR@";
+
 	if (voslibs) {
 	    if (usesharelib) {
 		arglist[nargs++] = mkfname (SHARELIB);
