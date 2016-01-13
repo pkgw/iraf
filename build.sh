@@ -37,8 +37,7 @@ find -name "*.a" | xargs rm -f
 
 cp unix/boot/spp/xc.c unix/boot/spp/xc.c.orig
 ldflag=$(echo $(pkg-config --libs-only-L cfitsio)) # nesting to remove trailing spaces
-sed -e "s|@EXTRA_LDFLAG@|$ldflag|g" \
-   -e "s|@F2C_LIB@|${host}f2c/libf2c/libf2c.a|g" \
+sed -e "s|@F2C_LIB@|${host}f2c/libf2c/libf2c.a|g" \
    <unix/boot/spp/xc.c.orig >unix/boot/spp/xc.c
 
 (cd unix/f2c/src && make -f makefile.u)

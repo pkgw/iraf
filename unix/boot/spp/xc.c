@@ -1202,7 +1202,6 @@ passflag:		    mkobject = YES;
 	} else
 	    arglist[nargs++] = mkfname (LIBMAIN);
 
-	arglist[nargs++] = "@EXTRA_LDFLAG@";
 	arglist[nargs++] = "-lm";
 
 	if (voslibs) {
@@ -1252,6 +1251,14 @@ passflag:		    mkobject = YES;
 	    addflags (fortlib[8], arglist, &nargs);
 	    addflags (fortlib[9], arglist, &nargs);
 	}
+
+	{
+	    char *text = os_getenv ("EXTRA_LDFLAGS");
+	    if (text != NULL) {
+		addflags (text, arglist, &nargs);
+	    }
+	}
+
 	arglist[nargs] = NULL;
 
 	if (ncomp) {
