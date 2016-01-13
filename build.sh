@@ -43,6 +43,7 @@ sed -e "s|@F2C_LIB@|${host}f2c/libf2c/libf2c.a|g" \
 (cd unix/f2c/src && make -f makefile.u)
 (cd unix/f2c/libf2c && make -f makefile.u)
 cp unix/f2c/libf2c/f2c.h unix/hlib/libc/
+cp unix/f2c/libf2c/f2c.h unix/hlib/
 export F2C=$(pwd)/unix/f2c/src/f2c
 
 ${iraf}util/mkarch $IRAFARCH
