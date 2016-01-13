@@ -10,7 +10,7 @@ fi
 
 set -x
 export IRAFARCH="$1"
-export iraf=`pwd`/
+export iraf=$(pwd)/
 export host=unix/
 export hlib=${iraf}${host}hlib/
 export PATH=$PATH:${iraf}${host}"/bin/"
@@ -29,8 +29,8 @@ rm -f  ${host}bin
 ln -sf bin.${IRAFARCH} bin
 
 pushd ${host}hlib
-ln -sf mach`getconf LONG_BIT`.h mach.h
-ln -sf iraf`getconf LONG_BIT`.h iraf.h
+ln -sf mach$(getconf LONG_BIT).h mach.h
+ln -sf iraf$(getconf LONG_BIT).h iraf.h
 popd
 
 find -name "*.a" | xargs rm -f
