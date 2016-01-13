@@ -43,6 +43,7 @@ sed -e "s|@EXTRA_LDFLAG@|$ldflag|g" \
 
 (cd unix/f2c/src && make -f makefile.u)
 (cd unix/f2c/libf2c && make -f makefile.u)
+cp unix/f2c/libf2c/f2c.h unix/hlib/libc/
 export F2C=$(pwd)/unix/f2c/src/f2c
 
 ${iraf}util/mkarch $IRAFARCH
