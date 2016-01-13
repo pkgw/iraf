@@ -67,8 +67,9 @@ zztest: zztest.o $(OBJS)
 
 lib:
 	rm -f *.o
-	for l in VOTable VOClient samp xmlrpc xmlrpc_client xmlrpc_server xmlrpc_server_abyss \
-	         xmlrpc_abyss xmlrpc_util xmlrpc_xmlparse xmlrpc_xmltok xrpc ; do \
+	for l in VOApps VOTable VOClient samp xmlrpc xmlrpc_client xmlrpc_server \
+	         xmlrpc_server_abyss xmlrpc_abyss xmlrpc_util xmlrpc_xmlparse \
+	         xmlrpc_xmltok xrpc ; do \
 	  ar x ../lib/lib$${l}.a ; \
 	done && \
 	chmod 644 *.o && \
