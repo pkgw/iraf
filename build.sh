@@ -24,7 +24,7 @@ popd
 find -name "*.a" | xargs rm -f
 
 cp unix/boot/spp/xc.c unix/boot/spp/xc.c.orig
-sed -e "s|@CONDA_LDFLAG@|$(pkg-config --libs-only-L cfitsio)|g" \
+sed -e "s|@EXTRA_LDFLAG@|$(pkg-config --libs-only-L cfitsio)|g" \
    -e "s|@F2C_LIB@|$host/f2c/libf2c/libf2c.a|g" \
    <unix/boot/spp/xc.c.orig >unix/boot/spp/xc.c
 
