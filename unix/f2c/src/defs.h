@@ -29,7 +29,7 @@ use or performance of this software.
 
 #define MAXDIM 20
 #define MAXINCLUDES 10
-#define MAXLITERALS 200		/* Max number of constants in the literal
+#define MAXLITERALS 2048       	/* Max number of constants in the literal
 				   pool */
 #define MAXCTL 20
 #define MAXHASH 802
