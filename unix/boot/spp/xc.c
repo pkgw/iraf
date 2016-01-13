@@ -1202,7 +1202,7 @@ passflag:		    mkobject = YES;
 	} else
 	    arglist[nargs++] = mkfname (LIBMAIN);
 
-	arglist[nargs++] = "-L@EXTRA_LDFLAG@";
+	arglist[nargs++] = "@EXTRA_LDFLAG@";
 	arglist[nargs++] = "-lm";
 
 	if (voslibs) {
