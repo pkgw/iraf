@@ -8,6 +8,7 @@ export HOST_READLINE=1
 export HOST_EXPAT=1
 export HOST_CFITSIO=1
 export IRAFARCH=`${hlib}irafarch.csh`
+export F2C=${host}/f2c/src/f2c
 
 rm -rf vo/votools/.old
 rm -rf vo/votools/.url*
