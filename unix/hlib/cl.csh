@@ -10,7 +10,7 @@
 
 # Determine CL binary to run based on how we were called.
 
-set cl_binary		= "vocl.e"
+set cl_binary		= "cl.e"
 
 if (`echo $0 | egrep ecl` != "") then
     set cl_binary	= "ecl.e"
