@@ -137,8 +137,8 @@ endsw
 #
 setenv HSI_CF  "-I${HOME}/.iraf/ $HSI_CF"
 setenv HSI_FF  "-I${HOME}/.iraf/ $HSI_FF"
-setenv HSI_LF  "-I${HOME}/.iraf/ $HSI_LF -L$PREFIX/lib"
-setenv HSI_XF  "-I${HOME}/.iraf/ $HSI_XF -L$PREFIX/lib"
+setenv HSI_LF  "-I${HOME}/.iraf/ $HSI_LF"
+setenv HSI_XF  "-I${HOME}/.iraf/ $HSI_XF"
 
 
 # The following determines whether or not the VOS is used for filename mapping.
