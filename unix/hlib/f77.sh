@@ -48,7 +48,7 @@ CC=${CC_f2c:-'gcc'}
 CFLAGS=${CFLAGS:-"-I${iraf}unix/bin.${IRAFARCH}"}
 EFL=${EFL:-/v/bin/efl}
 EFLFLAGS=${EFLFLAGS:-'system=portable deltastno=10'}
-F2C=${F2C:-/usr/bin/f2c}
+F2C=${iraf}unix/f2c/src/f2c
 F2CFLAGS=${F2CFLAGS:='-KRw8 -Nn802'}
 keepc=0
 warn=1
@@ -88,7 +88,7 @@ do
 		shift 1
 		;;
 
-	-f2c)	F2C="$2"
+	-f2c)	# just ignore this F2C="$2"
 		#F2C="${iraf}/unix/bin/f2c.e"
 		shift 2
 		;;
@@ -305,6 +305,6 @@ do
 	esac
 done
 
-case $cOPT in 2) $CC $G -o $OUTF $OFILES -lf2c -lm;; esac
+case $cOPT in 2) $CC $G -o $OUTF $OFILES ${iraf}unix/f2c/libf2c/libf2c.a -lm;; esac
 rc=$?
 exit $rc

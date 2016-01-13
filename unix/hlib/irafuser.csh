@@ -13,7 +13,7 @@ setenv	tmp	/tmp/
 # Default to GCC for compilation.
 setenv	CC	gcc
 setenv	F77	$hlib/f77.sh
-setenv	F2C	/usr/bin/f2c
+setenv	F2C	$host/f2c/src/f2c
 setenv	RANLIB	ranlib
 
 switch ($MACH)
@@ -137,14 +137,14 @@ endsw
 #
 setenv HSI_CF  "-I${HOME}/.iraf/ $HSI_CF"
 setenv HSI_FF  "-I${HOME}/.iraf/ $HSI_FF"
-setenv HSI_LF  "-I${HOME}/.iraf/ $HSI_LF"
-setenv HSI_XF  "-I${HOME}/.iraf/ $HSI_XF"
+setenv HSI_LF  "-I${HOME}/.iraf/ $HSI_LF -L$PREFIX/lib"
+setenv HSI_XF  "-I${HOME}/.iraf/ $HSI_XF -L$PREFIX/lib"
 
 
 # The following determines whether or not the VOS is used for filename mapping.
 if (-f ${iraf}lib/libsys.a) then
 	setenv	HSI_LIBS\
-    "${hbin}libboot.a ${iraf}lib/libsys.a ${iraf}lib/libvops.a -lf2c ${hbin}libos.a"
+    "${hbin}libboot.a ${iraf}lib/libsys.a ${iraf}lib/libvops.a ${iraf}unix/f2c/libf2c/libf2c.a ${hbin}libos.a -lm"
 else
 	setenv	HSI_CF "$HSI_CF -DNOVOS"
 	setenv	HSI_LIBS "${hbin}libboot.a ${hbin}libos.a"

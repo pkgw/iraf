@@ -23,6 +23,11 @@ ln -sf iraf`getconf LONG_BIT`.h iraf.h
 popd
 
 find -name "*.a" | xargs rm -f
+
+(cd unix/f2c/src && make -f makefile.u)
+(cd unix/f2c/libf2c && make -f makefile.u)
+export F2C=$(pwd)/unix/f2c/src/f2c
+
 make src
 export NOVOS=1
 pushd vendor/voclient
