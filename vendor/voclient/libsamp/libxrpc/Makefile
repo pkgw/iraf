@@ -36,7 +36,7 @@ OBJS  = xrClient.o xrServer.o xrMethod.o xrUtil.o xrStruct.o xrArray.o
 INCS  = xrpc.h xrpcP.h
 
 
-LFLAGS 	= -L. -L./lib 
+LFLAGS 	= -L. -L./lib
 LIBS 	=
 
 
@@ -48,9 +48,12 @@ clean:
 	(./mkclean)
 	/bin/rm -rf Shared Static UnitTests/* *.o *.a *.e
 
-install: xrpc
-	(cp libxrpc.a ../libsamp.a)
-	cp -rp $(INCS) ./include/* ../../include
+install: libxrpc.a
+	cp libxrpc.a ../../lib
+	cp $(INCS) ../../include
+
+libxrpc.a: $(SRCS:%.c=%.o)
+	ar rv libxrpc.a $?
 
 World:
 everything:

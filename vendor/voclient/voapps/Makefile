@@ -28,9 +28,6 @@ SHAREDLIB   = $(HERE)/$(LIBBASE).so.$(VERSION)
 
 
 # includes, flags and libraries
-CC              = gcc
-CINCS           = -I$(INCDIR)  -I.
-
 ifeq ($(PLATFORM), "Darwin")
     ifeq  ($(PLMACH), "x86_64")
         CARCH   = -m64 -mmacosx-version-min=10.5
@@ -38,23 +35,14 @@ ifeq ($(PLATFORM), "Darwin")
         CARCH   = -arch i386 -arch ppc -m32 -mmacosx-version-min=10.4
     endif
 else
-    CLIBS       = -lm -lc -lcurl -lpthread
     CARCH       =
 endif
 
-CLIBS           = -lm -lc -lcurl -lpthread -lm
-CFLAGS          := $(CFLAGS) $(CARCH) -D$(PLATFORM) $(CINCS) -L./
-
-
-
-
-# includes, flags and libraries
 CC 	    = gcc
-CINCS  	    = -I$(HERE) -I../ -I../include -L../ -L../lib/ -L../
-
-#F77 	    = g77
+CINCS  	    = -I$(HERE) -I../ -I../include -L../ -L../lib/ -L../ $(shell curl-config --cflags)
+CFLAGS     := $(CFLAGS) $(CARCH) -D$(PLATFORM) $(CINCS) -L./
+CLIBS       = $(shell curl-config --libs) -lm -lc -lpthread -lm
 F77 	    = gfortran
-#FFLAGS 	    = -g -Wall
 
 
 # list of source and include files
@@ -86,9 +74,10 @@ C_TASKS	    = vodata vodirectory votcopy votget votinfo vosesame
 TARGETS	    = $(F77_TASKS) $(SPP_TASKS) $(C_TASKS)
 
 SRCS	    = $(C_SRCS) $(F77_SRCS) $(SPP_SRCS) 
-OBJS	    = $(C_OBJS) $(F77_OBJS) $(SPP_OBJS) 
-HOST_LIBS   = -lcurl -lcfitsio -lpthread -lm
-LIBS        = lib$(NAME).a -lVOTable -lVOClient -lsamp $(HOST_LIBS)
+OBJS	    = $(C_OBJS) $(F77_OBJS) $(SPP_OBJS)
+# the -Wl,-rpath is a hack since Conda's libcurl.so is a little borked
+HOST_LIBS   = $(shell curl-config --libs) -Wl,-rpath,$(shell curl-config --prefix)/lib $(shell pkg-config --libs cfitsio expat) -lpthread -lm
+LIBS        = lib$(NAME).a -L$(LIBDIR) -lVOTable -lVOClient -lsamp -lxmlrpc -lxmlrpc_client -lxmlrpc_server -lxmlrpc_server_abyss -lxmlrpc_abyss -lxmlrpc_util -lxmlrpc_xmlparse -lxmlrpc_xmltok -lxrpc  $(HOST_LIBS)
 
 
 

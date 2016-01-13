@@ -28,7 +28,7 @@ ifeq  ($(PLATFORM), "Darwin")
         CARCH	= -arch i386 -arch ppc -m32 -mmacosx-version-min=10.4
     endif
 else
-    CARCH	= 
+    CARCH	=
 endif
 
 LIBS		= -lm -lc -lpthread
@@ -44,16 +44,28 @@ all:
 
 libs:
 
-mylib:
-#	(cd common      ; ${MAKE} )
-	mkdir -p include lib
-	mkdir -p libsamp/libxrpc/lib/build
-	(cd libsamp     ; ${MAKE} .BASE lib ; cp *.h ../include ; cp *.a ../lib )
-	(cd libvoclient ; ${MAKE} install )
-	cp libsamp/cfitsio/*.h include
-	(cd libvotable  ; ${MAKE} install)
-	(cd voapps      ; ${MAKE} lib ; cp *.a ../lib )
-	(rm -f *.o ; cd libvo       ; ${MAKE} HOST_CURL=1 lib)
+fresh_libvo:
+# cleanup:
+	rm -rf include lib
+	rm -rf libsamp/libxrpc/lib
+	$(MAKE) -C libsamp/libxrpc clean
+	cd libsamp && rm -f *.o *.a *.e *.so
+	$(MAKE) -C libvoclient clean
+	$(MAKE) -C libvotable clean
+	$(MAKE) -C voapps clean
+	$(MAKE) -C libvo clean
+# build:
+	mkdir include lib
+	cd libsamp/libxrpc/xmlrpc-c && \
+	  ./configure --prefix=$$iraf/vendor/voclient && \
+	  make && \
+	  make install
+	$(MAKE) -C libsamp/libxrpc install
+	$(MAKE) -C libsamp install
+	$(MAKE) -C libvoclient install
+	$(MAKE) -C libvotable install
+	$(MAKE) -C voapps install
+	$(MAKE) -C libvo lib
 
 apps:
 	(cd common      ; ${MAKE} apps)

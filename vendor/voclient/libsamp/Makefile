@@ -25,7 +25,7 @@ SHAREDLIB 	= $(LIBDIR)/$(LIBBASE).so.$(VERSION)
 
 
 # includes, flags and libraries
-CINCS           = -I$(INCDIR)  -I. -Ilibxrpc/include -Ilibxrpc
+CINCS           = -I$(INCDIR)  -I. -Ilibxrpc/include -Ilibxrpc $(shell curl-config --cflags)
 
 ifeq ("$(PLATFORM)", "Darwin")
     ifeq  ("$(PLMACH)", "macintel")
@@ -34,11 +34,10 @@ ifeq ("$(PLATFORM)", "Darwin")
         CARCH   = -arch i386 -arch ppc -m32 -mmacosx-version-min=10.4
     endif
 else
-    CLIBS       = -lm -lc -lpthread -lcurl
     CARCH       = -D$(PLATFORM)
 endif
 
-CLIBS		= -lm -lc -lcurl -lpthread
+CLIBS		= $(shell curl-config --libs) -lm -lc -lpthread
 CFLAGS         := $(CFLAGS) $(CINCS)
 
 
@@ -53,14 +52,14 @@ OBJS 		= samp.o sampHub.o sampCommands.o sampHandlers.o \
 INCS 		= samp.h sampDecl.h
 LIBS		= lib$(NAME).a $(CLIBS)
 
-APPS		= zztest 
+APPS		= zztest
 
 
 all:	.BASE lib apps install
 
 World:	.BASE lib apps install
 
-install: .BASE lib apps
+install: .BASE lib
 	cp lib$(NAME).a $(LIBDIR)
 	cp $(INCS) $(INCDIR)
 
@@ -151,7 +150,7 @@ mono_wrap:  samp.i
 #
 ##############################################################################
 
-wrap_libs: wrap_code tcl_lib python_lib perl_lib java_lib 
+wrap_libs: wrap_code tcl_lib python_lib perl_lib java_lib
 
 tcl_lib:  samp.i
 	$(CC) -fPIC -c $(SRCS) sampTcl.c

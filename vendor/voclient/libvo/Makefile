@@ -65,19 +65,16 @@ zztest: zztest.o $(OBJS)
 #  LIBVO dependency libraries.
 ####################################
 
-lib: objs $(INCS)
+lib:
 	rm -f *.o
-	ar x ../lib/libsamp.a
-	ar x ../lib/libVOTable.a
-	ar x ../lib/libVOClient.a
-	ar x ../lib/libVOApps.a
-ifndef HOST_CURL
-	ar x ../lib/libcurl.a
-endif
-	chmod 644 *.o
-	ar rv libVO.a *.o
-	/bin/rm -f *.o __*
-
+	for l in VOTable VOClient samp xmlrpc xmlrpc_client xmlrpc_server xmlrpc_server_abyss \
+	         xmlrpc_abyss xmlrpc_util xmlrpc_xmlparse xmlrpc_xmltok xrpc ; do \
+	  ar x ../lib/lib$${l}.a ; \
+	done && \
+	chmod 644 *.o && \
+	ar rv libVO.a *.o && \
+	cp libVO.a ../lib/ && \
+	rm -f *.o __*
 
 
 
