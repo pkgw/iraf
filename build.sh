@@ -56,6 +56,9 @@ popd
 
 ${iraf}util/mksysnovos
 
+# We now need to rebuild libVO because of libvotable/votUtil_spp.x, which it
+# wasn't possible to compile until we built the "xc" tool.
+
 unset NOVOS
 export pkglibs=${iraf}noao/lib/,${host}bin/,${host}hlib/
 pushd vendor/voclient
