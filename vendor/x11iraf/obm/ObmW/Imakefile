@@ -158,7 +158,7 @@ laylex.o:
 	$(CC) $(FWFCFLAGS) laylex.c
 
 laygram.c laygram.h : laygram.y
-	yacc -d laygram.y
+	$(YACC) -d laygram.y
 	sed 's/yy/LayYY/g' y.tab.c > laygram.c
 	sed 's/yy/LayYY/g' y.tab.h > laygram.h
 	rm y.tab.c y.tab.h
