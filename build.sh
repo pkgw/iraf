@@ -14,13 +14,27 @@ prefix="$2"
 export iraf=$(pwd)/
 export host=${iraf}unix/
 export hlib=${host}hlib/
-export PATH=$PATH:${host}"/bin/"
+export PATH=$PATH:${host}"bin/"
 export pkglibs=${iraf}noao/lib/,${host}hlib/libc/,${host}bin/
 export HOST_CURL=1
 export HOST_READLINE=1
 export HOST_EXPAT=1
 export HOST_CFITSIO=1
 export F2C=${host}f2c/src/f2c
+cat >build_settings.sh <<EOF
+export IRAFARCH="$IRAFARCH"
+export iraf="$iraf"
+export host="$host"
+export hlib="$hlib"
+export PATH="$PATH"
+export pkglibs="$pkglibs"
+export HOST_CURL="$HOST_CURL"
+export HOST_READLINE="$HOST_READLINE"
+export HOST_EXPAT="$HOST_EXPAT"
+export HOST_CFITSIO="$HOST_CFITSIO"
+export F2C="$F2C"
+echo you may wish to alter \\\$NOVOS or \\\$pkglibs
+EOF
 
 rm -rf vo/votools/.old
 rm -rf vo/votools/.url*
@@ -49,7 +63,6 @@ sed -e "s|/iraf/iraf|$prefix|g" \
 (cd unix/f2c/libf2c && make -f makefile.u)
 cp unix/f2c/libf2c/f2c.h unix/hlib/libc/
 cp unix/f2c/libf2c/f2c.h unix/hlib/
-export F2C=$(pwd)/unix/f2c/src/f2c
 
 ${iraf}util/mkarch $IRAFARCH
 
