@@ -43,10 +43,10 @@ case macosx:
     breaksw
 
 case macintel:
-    setenv XC_CFLAGS "-I${iraf}unix/f2c"
+    setenv XC_CFLAGS "-I${iraf}unix/f2c -Wno-return-type"
     setenv XC_FFLAGS "-I${iraf}unix/f2c"
-    setenv HSI_CF "-I${iraf}unix/f2c -g -O2 -I${hlib}libc -DMACOSX -DMACINTEL -DMACH64 -w -Wunused -m64 -DHOST_F2C -DHOST_CURL -DHOST_EXPAT -DHOST_CFITSIO"
-    setenv HSI_XF "-I${iraf}unix/f2c -g -Inolibc -I${hlib}libc -/DMACOSX -/DMACINTEL -w -/Wunused -/DMACH64 -/m64"
+    setenv HSI_CF "-I${iraf}unix/f2c -g -O2 -I${hlib}libc -DMACOSX -DMACINTEL -DMACH64 -w -Wunused -m64 -DHOST_F2C -DHOST_CURL -DHOST_EXPAT -DHOST_CFITSIO -Wno-return-type"
+    setenv HSI_XF "-I${iraf}unix/f2c -g -Inolibc -I${hlib}libc -/DMACOSX -/DMACINTEL -w -/Wunused -/DMACH64 -/m64 -/Wno-return-type"
     setenv HSI_FF "-I${iraf}unix/f2c -g -O -m64 -DMACH64 -DBLD_KERNEL"
     setenv HSI_LF "-m64 -DMACH64"
     setenv HSI_F77LIBS ""
