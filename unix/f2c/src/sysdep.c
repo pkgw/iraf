@@ -21,6 +21,7 @@ other tortious action, arising out of or in connection with the
 use or performance of this software.
 ****************************************************************/
 #include "defs.h"
+#include <unistd.h> /* mkdtemp */
 #include "usignal.h"
 
 char binread[] = "rb", textread[] = "r";
