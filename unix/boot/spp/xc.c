@@ -1449,7 +1449,8 @@ again:
 	    libref = libname;
 	    goto again;
 	} else
-	    strcpy (libname, libref);
+	    if (libname != libref)
+		strcpy (libname, libref);
 
 	/* Position IP to EOS. */
 	for (ip=libref;  *ip;  ip++)
