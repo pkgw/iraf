@@ -33,8 +33,7 @@
 	# memory violation.
 
 	.globl	_mem_
-	.abs	_mem_,  0
-	#_mem_	=	0
+	_mem_	=	0
 
 _zsvjmp_:
 	# %rsi ... &status  %rdi ... &jumpbuf
