@@ -3,14 +3,15 @@
 # Derived from the build.sh developed by "joequant",
 # https://github.com/joequant/iraf/blob/linux-build/build.sh
 
-if [ $# -ne 2 ] ; then
-    echo >&2 "usage: $0 <iraf-architecture-name> <install-prefix>"
+if [ $# -ne 3 ] ; then
+    echo >&2 "usage: $0 <iraf-architecture-name> <install-prefix> <X11-prefix>"
     exit 1
 fi
 
 set -x
 export IRAFARCH="$1"
 prefix="$2"
+x11prefix="$3"
 export iraf=$(pwd)/
 export host=${iraf}unix/
 export hlib=${host}hlib/
@@ -94,7 +95,8 @@ pushd vendor/x11iraf
 mkdir -p bin.unknownarch lib.unknownarch
 ln -s bin.unknownarch bin
 ln -s lib.unknownarch lib
-make World PREFIX="$prefix"
+export X11_PREFIX="$x11prefix"
+make World
 popd
 
 export PATH=$PATH:"${host}bin/"

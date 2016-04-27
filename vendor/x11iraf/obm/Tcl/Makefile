@@ -125,15 +125,15 @@ TCLIBDIR =
          IMAKESRC = $(CONFIGSRC)/imake
         DEPENDSRC = $(CONFIGSRC)/util
 
-          INCROOT = $(PREFIX)/include
-        USRLIBDIR = $(PREFIX)/lib
+          INCROOT = $(X11_PREFIX)/include
+        USRLIBDIR = $(X11_PREFIX)/lib
            VARDIR = /var
         VARLIBDIR = $(VARDIR)/lib
   SYSTEMUSRLIBDIR = /usr/lib
   SYSTEMUSRINCDIR = /usr/include
-         SHLIBDIR = $(PREFIX)/lib
+         SHLIBDIR = $(X11_PREFIX)/lib
        LINTLIBDIR = $(USRLIBDIR)/lint
-          MANPATH = $(PREFIX)/man
+          MANPATH = $(X11_PREFIX)/man
     MANSOURCEPATH = $(MANPATH)/man
            MANDIR = $(MANSOURCEPATH)$(MANSUFFIX)
         LIBMANDIR = $(MANSOURCEPATH)$(LIBMANSUFFIX)
@@ -278,7 +278,7 @@ MODLDCOMBINEFLAGS = -X -r
      INSTDATFLAGS = -m 0444
     INSTKMEMFLAGS = -m 4711
 
-      PROJECTROOT = $(PREFIX)
+      PROJECTROOT = $(X11_PREFIX)
 
       CDEBUGFLAGS = -Os
         CCOPTIONS = -Wall -Wpointer-arith -no-cpp-precomp
@@ -349,7 +349,7 @@ FCHOWN_DEFINES = -DHAS_FCHOWN
 # X Window System make variables; these need to be coordinated with rules
 
              XTOP = $(TOP)
-           BINDIR = $(PREFIX)/bin
+           BINDIR = $(X11_PREFIX)/bin
      BUILDINCROOT = $(TOP)/exports
       BUILDINCDIR = $(BUILDINCROOT)/include
       BUILDINCTOP = ../..
@@ -366,14 +366,14 @@ FCHOWN_DEFINES = -DHAS_FCHOWN
      XBUILDBINDIR = $(XBUILDINCROOT)/bin
            INCDIR = $(INCROOT)
            ADMDIR = /usr/adm
-           LIBDIR = $(PREFIX)/lib/X11
-         SHAREDIR = $(PREFIX)/share/X11
-       LIBEXECDIR = $(PREFIX)/libexec
+           LIBDIR = $(X11_PREFIX)/lib/X11
+         SHAREDIR = $(X11_PREFIX)/share/X11
+       LIBEXECDIR = $(X11_PREFIX)/libexec
         MODULEDIR = $(USRLIBDIR)/modules
    TOP_X_INCLUDES =
           XBINDIR = $(PROJECTROOT)/bin
 
-       INSTSRCDIR = $(PREFIX)/src
+       INSTSRCDIR = $(X11_PREFIX)/src
 
         ETCX11DIR = /etc/X11
 
