@@ -125,15 +125,15 @@ TCLIBDIR =
          IMAKESRC = $(CONFIGSRC)/imake
         DEPENDSRC = $(CONFIGSRC)/util
 
-          INCROOT = /conda/envs/_build_placehold_placehold_placehold_placehold_placehold_placehold_p/include
-        USRLIBDIR = /conda/envs/_build_placehold_placehold_placehold_placehold_placehold_placehold_p/lib
+          INCROOT = $(PREFIX)/include
+        USRLIBDIR = $(PREFIX)/lib
            VARDIR = /var
         VARLIBDIR = $(VARDIR)/lib
   SYSTEMUSRLIBDIR = /usr/lib
   SYSTEMUSRINCDIR = /usr/include
-         SHLIBDIR = /conda/envs/_build_placehold_placehold_placehold_placehold_placehold_placehold_p/lib
+         SHLIBDIR = $(PREFIX)/lib
        LINTLIBDIR = $(USRLIBDIR)/lint
-          MANPATH = /conda/envs/_build_placehold_placehold_placehold_placehold_placehold_placehold_p/man
+          MANPATH = $(PREFIX)/man
     MANSOURCEPATH = $(MANPATH)/man
            MANDIR = $(MANSOURCEPATH)$(MANSUFFIX)
         LIBMANDIR = $(MANSOURCEPATH)$(LIBMANSUFFIX)
@@ -278,7 +278,7 @@ MODLDCOMBINEFLAGS = -X -r
      INSTDATFLAGS = -m 0444
     INSTKMEMFLAGS = -m 4711
 
-      PROJECTROOT = /conda/envs/_build_placehold_placehold_placehold_placehold_placehold_placehold_p
+      PROJECTROOT = $(PREFIX)
 
       CDEBUGFLAGS = -Os
         CCOPTIONS = -Wall -Wpointer-arith -no-cpp-precomp
@@ -349,7 +349,7 @@ FCHOWN_DEFINES = -DHAS_FCHOWN
 # X Window System make variables; these need to be coordinated with rules
 
              XTOP = $(TOP)
-           BINDIR = /conda/envs/_build_placehold_placehold_placehold_placehold_placehold_placehold_p/bin
+           BINDIR = $(PREFIX)/bin
      BUILDINCROOT = $(TOP)/exports
       BUILDINCDIR = $(BUILDINCROOT)/include
       BUILDINCTOP = ../..
@@ -366,14 +366,14 @@ FCHOWN_DEFINES = -DHAS_FCHOWN
      XBUILDBINDIR = $(XBUILDINCROOT)/bin
            INCDIR = $(INCROOT)
            ADMDIR = /usr/adm
-           LIBDIR = /conda/envs/_build_placehold_placehold_placehold_placehold_placehold_placehold_p/lib/X11
-         SHAREDIR = /conda/envs/_build_placehold_placehold_placehold_placehold_placehold_placehold_p/share/X11
-       LIBEXECDIR = /conda/envs/_build_placehold_placehold_placehold_placehold_placehold_placehold_p/libexec
+           LIBDIR = $(PREFIX)/lib/X11
+         SHAREDIR = $(PREFIX)/share/X11
+       LIBEXECDIR = $(PREFIX)/libexec
         MODULEDIR = $(USRLIBDIR)/modules
    TOP_X_INCLUDES =
           XBINDIR = $(PROJECTROOT)/bin
 
-       INSTSRCDIR = /conda/envs/_build_placehold_placehold_placehold_placehold_placehold_placehold_p/src
+       INSTSRCDIR = $(PREFIX)/src
 
         ETCX11DIR = /etc/X11
 
