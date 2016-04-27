@@ -48,7 +48,7 @@ ln -sf mach$(getconf LONG_BIT).h mach.h
 ln -sf iraf$(getconf LONG_BIT).h iraf.h
 popd
 
-find -name "*.a" | xargs rm -f
+find . -name "*.a" | xargs rm -f
 
 cp unix/boot/spp/xc.c unix/boot/spp/xc.c.orig
 ldflag=$(echo $(pkg-config --libs-only-L cfitsio)) # nesting to remove trailing spaces
