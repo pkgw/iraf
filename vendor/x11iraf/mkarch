@@ -51,7 +51,7 @@ switch ($UNAME)
     case darwin: 
     case macosx:
     case macintel:
-        if (`$uname_cmd -m` == "i386") then
+        if ((`$uname_cmd -m` == "i386") || (`$uname_cmd -m` == "x86_64")) then
             set mach            = "macintel"
         else
             set mach            = "macosx"
@@ -142,12 +142,6 @@ if ($cur_arch != "generic") then
         rm -f _files
 
         if ($clean == 1) then
-            echo "Cleaning Makefiles..."
-            rm -f Makefile */Makefile */*/Makefile
-            echo "Rebuilding Makefiles..."
-            xmkmf
-	    make Makefiles
-
             echo "Cleaning..."
             make clean >& /dev/null
         endif

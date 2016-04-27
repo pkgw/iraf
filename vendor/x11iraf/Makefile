@@ -1091,9 +1091,7 @@ World::
 	fi
 	$(MAKE) $(MFLAGS) arch      X11IRAFDIR=$$PWD
 	$(MAKE) $(MFLAGS) includes  X11IRAFDIR=$$PWD
-
 	$(MAKE) $(MFLAGS) depend    X11IRAFDIR=$$PWD
-
 	$(MAKE) $(MFLAGS) libs      X11IRAFDIR=$$PWD
 	$(MAKE) $(MFLAGS) apps	    X11IRAFDIR=$$PWD
 	$(MAKE) $(MFLAGS) install   X11IRAFDIR=$$PWD
