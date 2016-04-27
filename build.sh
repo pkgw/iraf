@@ -94,8 +94,7 @@ pushd vendor/x11iraf
 mkdir -p bin.unknownarch lib.unknownarch
 ln -s bin.unknownarch bin
 ln -s lib.unknownarch lib
-xmkmf
-make World
+make World PREFIX="$prefix"
 popd
 
 export PATH=$PATH:"${host}bin/"

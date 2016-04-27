@@ -1219,12 +1219,6 @@ emptyrule::
 cleandir::
 	$(RM) *.CKP *.ln *.BAK *.bak *.o core errs ,* *~ *.a .emacs_* tags TAGS make.log MakeOut   "#"*
 
-Makefile::
-	-@if [ -f Makefile ]; then set -x; \
-	$(RM) Makefile.bak; $(MV) Makefile Makefile.bak; \
-	else exit 0; fi
-	$(IMAKE_CMD) -DTOPDIR=$(TOP) -DCURDIR=$(CURRENT_DIR)
-
 tags::
 	$(TAGS) -w *.[ch]
 	$(TAGS) -xw *.[ch] > TAGS
