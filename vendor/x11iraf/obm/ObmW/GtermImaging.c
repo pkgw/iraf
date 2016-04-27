@@ -435,7 +435,7 @@ GtDestroyRaster (w, raster)
     register Mapping mp, next;
 
     if (raster <= 0)
-	return;
+	return 0;
 
     invalidate_draw_context (w);
 
@@ -939,7 +939,7 @@ GtRefreshPixels (w, raster, ct, x1, y1, nx, ny)
     register Mapping mp;
 
     if (!w || !XtIsRealized ((Widget)w))
-	return;
+	return 0;
 
     if (DBG_TRACE)
 	fprintf (stderr, "GtRefreshPixels:  ENTER\n");
@@ -1888,7 +1888,7 @@ GtFreeColormap (w, colormap)
 	    else
 		w->gterm.colormaps = cm->next;
 	    XtFree ((char *)cm);
-	    return;
+	    return 0;
 	}
 }
 
@@ -1921,7 +1921,7 @@ GtWriteIomap (w, iomap, first, nelem)
     register int c1, c2;
 
     if (w->gterm.useGlobalCmap)
-	return;
+	return 0;
 
     c1 = max(0, min(MAX_SZCMAP-1, first));
     c2 = max(0, min(MAX_SZCMAP-1, first + nelem - 1));
@@ -2236,7 +2236,7 @@ GtRaiseMapping (w, mapping, reference)
 
     mp = &w->gterm.mappings[mapping];
     if (!mp->defined)
-	return;
+	return 0;
 
     if (reference <= 0 || reference >= w->gterm.maxMappings)
 	ref_mp = w->gterm.mp_tail;
@@ -2245,7 +2245,7 @@ GtRaiseMapping (w, mapping, reference)
 
     /* Already on top? */
     if (mp == w->gterm.mp_tail)
-	return;
+	return 0;
 
     mp_unlink (w, mp);
     mp_linkafter (w, mp, ref_mp);
@@ -2263,7 +2263,7 @@ GtLowerMapping (w, mapping, reference)
 
     mp = &w->gterm.mappings[mapping];
     if (!mp->defined)
-	return;
+	return 0;
 
     if (reference <= 0 || reference >= w->gterm.maxMappings)
 	ref_mp = NULL;
@@ -2272,7 +2272,7 @@ GtLowerMapping (w, mapping, reference)
 
     /* Already lowered? */
     if (mp == w->gterm.mp_head)
-	return;
+	return 0;
 
     /* Lower it. */
     mp_unlink (w, mp);

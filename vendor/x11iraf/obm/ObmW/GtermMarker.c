@@ -867,7 +867,7 @@ GmRedisplay (w, region)
     register Marker gm;
 
     if (!w || !XtIsRealized ((Widget)w))
-	return;
+	return 0;
 
     /* Set the clip mask to only draw in the affected region. */
     if (region)
@@ -905,7 +905,7 @@ GmRaise (gm, ref_gm)
 
     /* Already on top? */
     if (gm == w->gterm.gm_tail || ref_gm && ref_gm->next == gm)
-	return;
+	return 0;
 
     /* Raise it. */
     gm_unlink (gm);
@@ -928,7 +928,7 @@ GmLower (gm, ref_gm)
 
     /* Already lowered? */
     if (gm == w->gterm.gm_head || ref_gm && ref_gm->prev == gm)
-	return;
+	return 0;
 
     /* Lower it. */
     gm_unlink (gm);
@@ -1597,11 +1597,11 @@ GmSetVertices (gm, points, first, npts)
 	if (gm->npoints > GM_MAXVERTICES) {
 	    if ((gm->points = (XPoint *) XtRealloc ((char *)gm->points,
 		    first + npts)) == (XPoint *)NULL)
-		return;
+		return 0;
 	} else if (first + npts > GM_MAXVERTICES) {
 	    if ((gm->points = (XPoint *)
 		    XtMalloc (first + npts)) == (XPoint *)NULL)
-		return;
+		return 0;
 	} else if (!gm->points)
 	    gm->points = gm->point_data;
 
@@ -2204,7 +2204,7 @@ gm_constraint (gm, new_gm, what)
 
     /* Return immediately if there are no constraint callbacks. */
     if (!gm->constraints)
-	return;
+	return 0;
 
     /* Prepare an argument list listing the marker attributes being changed
      * and their old and new values.  Each attribute is passed as three

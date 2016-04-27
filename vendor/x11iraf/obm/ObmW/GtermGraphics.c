@@ -330,7 +330,7 @@ GtermWidget w;
 
 
     if (!w || !XtIsRealized ((Widget)w))
-	return;
+	return 0;
 
     if (w->gterm.pixmap)
 	XFillRectangle (w->gterm.display, w->gterm.pixmap,
@@ -531,7 +531,7 @@ GtSetCursorPos (w, x, y)
     Raster rp;
 
     if (!w || !XtIsRealized ((Widget)w))
-	return;
+	return 0;
 
     /* Follow the current cursor position back to the source raster if
      * possible.  This gives us a default pipeline to follow in the reverse
@@ -566,7 +566,7 @@ GtSetCursorPos (w, x, y)
 
 	dx = get_draw_context (w);
 	if (!dx->nmappings)
-	    return;
+	    return 0;
 
 	/* Try to find the next mapping. */
 	if (nmap && rasters[nmap-1] == raster)
@@ -653,9 +653,9 @@ GtSetCursorType (w, type)
     Widget pw;
 
     if (!w || !XtIsRealized ((Widget)w))
-	return;
+	return 0;
     if (w->gterm.cursor_type == type)
-	return;
+	return 0;
 
     switch (w->gterm.cursor_type = type) {
     case GtNoCursor:
@@ -1128,7 +1128,7 @@ draw_crosshair (w, x, y)
     int x, y;
 {
     if (!w || !XtIsRealized ((Widget)w))
-	return;
+	return 0;
 
     if (w->gterm.pixmap) {
 	/* The preserve_screen flag is set if we need to preserve the
@@ -1166,7 +1166,7 @@ erase_crosshair (w)
     GtermWidget w;
 {
     if (!w || !XtIsRealized ((Widget)w))
-	return;
+	return 0;
 
     if (w->gterm.cursor_drawn) {
 	register int x = w->gterm.cur_x;

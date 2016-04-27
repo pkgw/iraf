@@ -278,7 +278,7 @@ request_colormap_focus (w)
 
 
     if (!w || !XtIsRealized ((Widget)w))
-	return;
+	return 0;
 
     /* Find the top level window. */
     for (p = XtParent(w);  !XtIsShell(p);  p = XtParent(p))
@@ -330,12 +330,12 @@ restore_colormap_focus (w)
     Window *wl, n_wl[MAX_WMWIN+1], old;
 
     if (!w || !XtIsRealized ((Widget)w))
-	return;
+	return 0;
 
     old = XtWindow(w);
     wl = w->gterm.wmWindows;
     if ((nw = w->gterm.n_wmWindows) == 0 || (nw == 1 && wl[0] == old))
-	return;
+	return 0;
 
     n_nw = 0;
     if (wl[0] != old)
@@ -377,11 +377,11 @@ inherit_default_colormap (w)
 	    w->gterm.ncolors, w->gterm.maxColors, w->gterm.base_pixel);
 
     if (!w || !XtIsRealized ((Widget)w))
-	return;
+	return 0;
     if (w->gterm.useDefaultCM || !w->gterm.haveColormap)
-	return;
+	return 0;
     if (w->gterm.base_pixel <= 0)
-	return;				/* fully allocated colormap */
+	return 0;				/* fully allocated colormap */
 
     /* We have to read the colormap property again as another client could
      * have reserved more static colors (i.e.,changed red_max), and we don't
@@ -457,11 +457,11 @@ update_default_colormap (w)
 
 
     if (!w || !XtIsRealized ((Widget)w))
-	return;
+	return 0;
     if (w->gterm.useDefaultCM || !w->gterm.haveColormap)
-	return;
+	return 0;
     if (w->gterm.useGlobalCmap)				/* 24-bit 	*/
-	return;
+	return 0;
 
     if (DBG_TRACE)
 	fprintf (stderr, "update_def_colormap:  ENTER\n");

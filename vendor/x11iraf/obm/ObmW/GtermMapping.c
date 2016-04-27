@@ -1133,7 +1133,7 @@ scale_bilinear (idata,inx,iny,ibpl, odata,onx,ony,obpl,
 
     buflen = (3 * dnx + 2) * sizeof(float) + dnx * sizeof(int);
     if ((buf = (float *) XtMalloc (buflen)) == NULL)
-	return;
+	return 0;
 
     lp = buf + 1;
     w1 = lp + dnx + 1;
@@ -1206,7 +1206,7 @@ scale_lowpass (idata,inx,iny,ibpl, odata,onx,ony,obpl, x_src,y_src,
     uchar *data;
     
     if ((data = (uchar *) XtMalloc (inx * iny)) == NULL)
-	return;
+	return 0;
 
     /* Run a lowpass filter over the input rect. */
     lw_convolve (idata,inx,iny,ibpl, sx,sy, data,inx,iny,ibpl, sx,sy,
@@ -1347,7 +1347,7 @@ scale_boxcar (idata,inx,iny,ibpl, odata,onx,ony,obpl, x_src,y_src,
     /* Compute the block averaged input rect.  */
     if (xblock > 1 || yblock > 1) {
 	if ((bp = (uchar *) XtMalloc (nx * ny)) == NULL)
-	    return;
+	    return 0;
 	bx_boxcar (idata,inx,iny,ibpl, x1,y1,x2,y2, bp, xblock, yblock);
 	idata = bp;
 	inx = ibpl = nx;
@@ -1401,7 +1401,7 @@ bx_boxcar (idata,inx,iny,ibpl, x1,y1,x2,y2, obuf, xblock, yblock)
     count = xblock * yblock;
 
     if ((sb = (int *) XtMalloc (obpl * sizeof(int))) == NULL)
-	return;
+	return 0;
 
     /* I don't think the following works for pixel values allocated from the
      * default colormap, as the pixel values are not sequentially allocated.
@@ -1488,7 +1488,7 @@ bx_interp (idata,inx,iny,ibpl, odata,onx,ony,obpl,
 
     buflen = (3 * dnx + 2) * sizeof(float) + dnx * sizeof(int);
     if ((buf = (float *) XtMalloc (buflen)) == NULL)
-	return;
+	return 0;
 
     lp = buf + 1;
     w1 = lp + dnx + 1;
@@ -1809,7 +1809,7 @@ get_pixel_mapping (w, mp1, mp2, update)
     mp2->rop = mp1->rop;
 
     if (!(mp2->defined = mp1->defined))
-	return;
+	return 0;
 
     mp2->src = mp1->src;
     if (mp1->st == GtPixel) {
@@ -1973,14 +1973,14 @@ update_mapping (w, mp)
     int *ip;
 
     if (mp->updated)
-	return;
+	return 0;
 
     /* The internal lookup tables are in pixel units. */
     initialize_mapping (&p_mp);
     get_pixel_mapping (w, mp, &p_mp, 0);
 
     if ((snx = p_mp.snx) <= 0 || (sny = p_mp.sny) <= 0)
-	return;
+	return 0;
 
     if ((dnx = p_mp.dnx) < 0) {
 	dnx = -dnx;
@@ -2031,7 +2031,7 @@ update_mapping (w, mp)
     else
 	mp->mapdata = (uchar *) XtMalloc (mp->datalen);
     if (mp->mapdata == NULL)
-	return;
+	return 0;
 
     /* Set the table pointers. */
     op = mp->mapdata;
