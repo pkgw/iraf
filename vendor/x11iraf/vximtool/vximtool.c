@@ -612,7 +612,7 @@ register VXimDataPtr vxim;
 
 #if defined(__DARWIN__) || defined (__CYGWIN__)
         /* On OS X and Cygwin we don't use fifos. */
-        xim->input_fifo = "none";
+        vxim->input_fifo = "none";
         return (NULL);
 #endif
 
