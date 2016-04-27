@@ -180,7 +180,7 @@ register int length;		/* length of string */
 	if (length > avail)
 	    length = avail;
 	if (length <= 0)
-		return;
+		return 0;
 
 	col = screen->buf[avail = 4 * screen->cur_row] + screen->cur_col;
 	attrs = attrs0 = screen->buf[avail + 1] + screen->cur_col;

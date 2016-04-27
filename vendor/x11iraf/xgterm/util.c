@@ -190,7 +190,7 @@ register int amount;
 	ScrollSelection(screen, -(amount));
 	if (amount == i) {
 		ClearScreen(screen);
-		return;
+		return 0;
 	}
 	shift = -screen->topline;
 	bot = screen->max_row - shift;
@@ -346,7 +346,7 @@ register int n;
 
 	if (screen->cur_row < screen->top_marg ||
 	 screen->cur_row > screen->bot_marg)
-		return;
+		return 0;
 	if(screen->cursor_state)
 		HideCursor();
 	screen->do_wrap = 0;
@@ -409,7 +409,7 @@ register int n;
 
 	if (screen->cur_row < screen->top_marg ||
 	 screen->cur_row > screen->bot_marg)
-		return;
+		return 0;
 	if(screen->cursor_state)
 		HideCursor();
 	screen->do_wrap = 0;
@@ -765,7 +765,7 @@ register TScreen *screen;
 				screen->scrolls--;
 			    if (screen->scrolls == 0) {
 				screen->incopy = 0;
-				return;
+				return 0;
 			    }
 			    screen->incopy = -1;
 			}
@@ -1022,7 +1022,7 @@ recolor_cursor (cursor, fg, bg)
     XQueryColors (dpy, DefaultColormap (dpy, DefaultScreen (dpy)),
 		  colordefs, 2);
     XRecolorCursor (dpy, cursor, colordefs, colordefs+1);
-    return;
+    return 0;
 }
 
 

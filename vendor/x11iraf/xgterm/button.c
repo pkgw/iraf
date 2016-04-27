@@ -1019,7 +1019,7 @@ TrackText(frow, fcol, trow, tcol)
 	old_endrow = screen->endHRow;
 	old_endcol = screen->endHCol;
 	if (frow == old_startrow && fcol == old_startcol &&
-	    trow == old_endrow   && tcol == old_endcol) return;
+	    trow == old_endrow   && tcol == old_endcol) return 0;
 	screen->startHRow = frow;
 	screen->startHCol = fcol;
 	screen->endHRow   = trow;

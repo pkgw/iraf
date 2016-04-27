@@ -1213,7 +1213,7 @@ char	*strval;		/* optional string value */
 	if (xim->cursor_chan)
 	    dataout = xim->cursor_chan->dataout;
 	else
-	    return;
+	    return 0;
 
 	/* Compute cursor coordinates. */
 	if (wcs) {

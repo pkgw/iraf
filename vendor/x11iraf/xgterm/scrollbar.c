@@ -269,7 +269,7 @@ WindowScroll(screen, top)
 		top = 0;
 	if((i = screen->topline - top) == 0) {
 		ScrollBarDrawThumb(screen->scrollWidget);
-		return;
+		return 0;
 	}
 
 	if(screen->cursor_state)
@@ -313,26 +313,26 @@ ScrollBarOn (xw, init, doalloc)
 	register int i;
 
 	if(screen->scrollbar)
-		return;
+		return 0;
 
 	if (init) {			/* then create it only */
-	    if (screen->scrollWidget) return;
+	    if (screen->scrollWidget) return 0;
 
 	    /* make it a dummy size and resize later */
 	    if ((screen->scrollWidget = CreateScrollBar (xw, -1, - 1, 5))
 		== NULL) {
 		Bell();
-		return;
+		return 0;
 	    }
 
-	    return;
+	    return 0;
 
 	}
 
 	if (!screen->scrollWidget) {
 	    Bell ();
 	    Bell ();
-	    return;
+	    return 0;
 	}
 
 	if (doalloc && screen->allbuf) {
@@ -382,7 +382,7 @@ ScrollBarOff(screen)
 	register TScreen *screen;
 {
 	if(!screen->scrollbar)
-		return;
+		return 0;
 	XtUnmapWidget(screen->scrollWidget);
 	screen->scrollbar = 0;
 	DoResizeScreen (term);

@@ -3080,10 +3080,10 @@ ShowCursor()
 	GC	currentGC;
 	Boolean	in_selection;
 
-	if (eventMode != NORMAL) return;
+	if (eventMode != NORMAL) return 0;
 
 	if (screen->cur_row - screen->topline > screen->max_row)
-		return;
+		return 0;
 	c = screen->buf[y = 4 * (screen->cursor_row = screen->cur_row)]
 	 [x = screen->cursor_col = screen->cur_col];
 	flags = screen->buf[y + 1][x];
@@ -3200,7 +3200,7 @@ HideCursor()
 	Boolean	in_selection;
 
 	if(screen->cursor_row - screen->topline > screen->max_row)
-		return;
+		return 0;
 	c = screen->buf[y = 4 * screen->cursor_row][x = screen->cursor_col];
 	flags = screen->buf[y + 1][x];
         fg = screen->buf[y + 2][x];

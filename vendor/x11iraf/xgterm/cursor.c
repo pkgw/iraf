@@ -168,7 +168,7 @@ register int	amount;
 	if (screen->cur_row > screen->bot_marg
 	 || screen->cur_row + amount <= screen->bot_marg) {
 		CursorDown(screen, amount);
-		return;
+		return 0;
 	}
 
 	CursorDown(screen, j = screen->bot_marg - screen->cur_row);
@@ -190,7 +190,7 @@ register int	amount;
 	if (screen->cur_row < screen->top_marg
 	 || screen->cur_row-amount >= screen->top_marg) {
 		CursorUp(screen, amount);
-		return;
+		return 0;
 	}
 
 	RevScroll(screen, amount - (screen->cur_row - screen->top_marg));

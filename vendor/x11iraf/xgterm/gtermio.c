@@ -401,7 +401,7 @@ int state;
 	register RequestPtr rp;
 
 	if (!state)
-	    return;
+	    return 0;
 
 	/* Cancel any buffered command output. */
 	wait_cursor = 0;

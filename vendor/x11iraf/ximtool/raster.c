@@ -1023,7 +1023,7 @@ register XimDataPtr xim;
 	static int label_init = 1;
 	    
 	if (!(xim->tileFrames && xim->tileLabels > 0))
-	    return;
+	    return 0;
 
 	/* Initialize the label markers. */
 	if (label_init) {
@@ -1623,7 +1623,7 @@ int *width, *height, *depth;
 
 	if (GtQueryRaster (xim->gt, 0,
 		&rtype, &scr_width, &scr_height, depth) == 0)
-	    return;
+	    return 0;
 
 	/* Use the entire display window if we are not tiling frames, if
 	 * there aren't enough frames to tile, or if the given frame is
@@ -1634,7 +1634,7 @@ int *width, *height, *depth;
 	    *sx = *sy = 0;
 	    *width = scr_width;
 	    *height = scr_height;
-	    return;
+	    return 0;
 	}
 
 	/* Get index of frame in tile Frames list. */

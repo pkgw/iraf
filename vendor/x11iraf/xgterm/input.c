@@ -182,7 +182,7 @@ Input (keyboard, screen, event, eightbit)
 	}
 	if (key)
 	        AdjustAfterInput(screen);
-	return;
+	return 0;
 }
 
 StringInput (screen, string, nbytes)

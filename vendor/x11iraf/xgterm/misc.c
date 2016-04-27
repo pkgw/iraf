@@ -82,10 +82,10 @@ xevents()
          * If there's no XEvents, don't wait around...
          */
         if ((input_mask & XtIMXEvent) != XtIMXEvent)
-                return;
+                return 0;
         do {
                 if (waitingForTrackInfo)
-                        return;
+                        return 0;
                 XtAppNextEvent (app_con, &event);
                 /*
                  * Hack to get around problems with the toolkit throwing away
@@ -290,14 +290,14 @@ register int flag;
 	screen->select |= flag;
 	if(screen->cursor_state)
 		ShowCursor();
-	return;
+	return 0;
 }
 
 unselectwindow(screen, flag)
 register TScreen *screen;
 register int flag;
 {
-	if (screen->always_highlight) return;
+	if (screen->always_highlight) return 0;
 
 #ifdef I18N
         if (screen->xic)
@@ -329,7 +329,7 @@ Bell()
 		GetBytesAvailable (ConnectionNumber(screen->display)) > 0)
 		xevents();
 	    if(screen->bellInProgress) { /* even after new events? */
-		return;
+		return 0;
 	    }
 	}
 #ifdef X_GETTIMEOFDAY
@@ -340,7 +340,7 @@ Bell()
 	now_msecs = 1000*curtime.tv_sec + curtime.tv_usec/1000;
 	if(lastBellTime != 0  &&  now_msecs - lastBellTime >= 0  &&
 	   now_msecs - lastBellTime < screen->bellSuppressTime) {
-	    return;
+	    return 0;
 	}
 	lastBellTime = now_msecs;
     }
@@ -515,7 +515,7 @@ register TScreen *screen;
 #endif /* ALLOWLOGFILEEXEC */
 
 	if(screen->logging || (screen->inhibit & I_LOG))
-		return;
+		return 0;
 	if(screen->logfile == NULL || *screen->logfile == 0) {
 		if(screen->logfile)
 			free(screen->logfile);
@@ -523,7 +523,7 @@ register TScreen *screen;
 			log_default = log_def_name;
 		mkstemp(log_default);
 		if((screen->logfile = malloc((unsigned)strlen(log_default) + 1)) == NULL)
-			return;
+			return 0;
 		strcpy(screen->logfile, log_default);
 	}
 	if(*screen->logfile == '|') {	/* exec command */
@@ -581,7 +581,7 @@ register TScreen *screen;
 #else
 		Bell();
 		Bell();
-		return;
+		return 0;
 #endif
 	} else {
 		if(access(screen->logfile, F_OK) != 0) {
@@ -589,15 +589,15 @@ register TScreen *screen;
 			creat_as(screen->uid, screen->gid,
 				 screen->logfile, 0644);
 		    else
-			return;
+			return 0;
 		}
 
 		if(access(screen->logfile, F_OK) != 0
 		   || access(screen->logfile, W_OK) != 0)
-		    return;
+		    return 0;
 		if((screen->logfd = open(screen->logfile, O_WRONLY | O_APPEND,
 					 0644)) < 0)
-			return;
+			return 0;
 	}
 	screen->logstart = bptr;
 	screen->logging = TRUE;
@@ -608,7 +608,7 @@ CloseLog(screen)
 register TScreen *screen;
 {
 	if(!screen->logging || (screen->inhibit & I_LOG))
-		return;
+		return 0;
 	FlushLog(screen);
 	close(screen->logfd);
 	screen->logging = FALSE;
@@ -1014,7 +1014,7 @@ register char *var, *value;
 		environ[envindex] = (char *)malloc ((unsigned)len + strlen (value) + 1);
 		strcpy (environ [envindex], var);
 		strcat (environ [envindex], value);
-		return;
+		return 0;
 	    }
 	    envindex ++;
 	}

@@ -2283,7 +2283,7 @@ char	*text;
 
 	if (!fr) {
 	    strcat (text, " \n \n");
-	    return;
+	    return 0;
 	}
 
 	for (i=0; i < fr->nmaps; i++) {

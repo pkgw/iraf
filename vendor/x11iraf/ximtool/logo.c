@@ -19,7 +19,7 @@ register XimDataPtr xim;
 
 
     if (!xim || !xim->gt)
-	return;
+	return 0;
 
     /* Create the default colormap.
     */
@@ -32,5 +32,5 @@ register XimDataPtr xim;
 
     if (xim_writeDisplay (xim, 1, "logo", logo_data,
 	LOGO_XDIM, LOGO_YDIM, r, g, b, LOGO_NCOLORS) < 0)
-	    return;
+	    return 0;
 }
