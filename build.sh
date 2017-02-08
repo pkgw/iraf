@@ -73,7 +73,7 @@ make fresh_libvo
 cp libvo/libVO.a ${iraf}lib
 popd
 
-${iraf}util/mksysnovos
+${iraf}util/mksysnovos || exit 1
 
 # We now need to rebuild libVO because of libvotable/votUtil_spp.x, which it
 # wasn't possible to compile until we built the "xc" tool.
@@ -86,7 +86,7 @@ cp libvo/libVO.a ${iraf}lib
 popd
 
 export pkglibs=${iraf}noao/lib/,${host}bin/,${host}hlib/libc/
-${iraf}util/mksysvos
+${iraf}util/mksysvos || exit 1
 
 cp ${host}bin/*.a ${iraf}lib
 rm pkg/utilities/nttools/xx_nttools.e
