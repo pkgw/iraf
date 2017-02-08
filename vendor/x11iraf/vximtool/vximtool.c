@@ -68,8 +68,8 @@
 #define	SZ_LABEL	256		/* main frame label string	*/
 #define	SZ_IMTITLE	128		/* image title string		*/
 #define	SZ_FIFOBUF	4000		/* transfer size for FIFO i/o	*/
-#define	SZ_FNAME	256
-#define	SZ_LINE		256
+#define	SZ_FNAME	512
+#define	SZ_LINE		512
 
 /* Magic numbers. */
 #define DEF_PORT	5137	        /* default tcp/ip socket  	*/
@@ -90,7 +90,7 @@
 #define SZ_FIFOBUF      4000
 #define SZ_OLD_WCSBUF   320             /* old WCS text buffer size     */
 #define SZ_WCSBUF       1024            /* WCS text buffer size         */
-#define SZ_FNAME        256
+#define SZ_FNAME        512
 #define SZ_IMCURVAL     160
 
 #define IIS_VERSION     10              /* version 10 -> 1.0            */

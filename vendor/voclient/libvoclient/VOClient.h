@@ -79,7 +79,7 @@ typedef void  (*SIGFUNC)();
 #define SZ_CLASS        	64
 #define SZ_MSGSTR       	65535
 #define SZ_PBUF         	128
-#define SZ_FNAME        	128
+#define SZ_FNAME        	512
 #define MAX_VALUES      	64
 
 #define DAL_CONN   		1	/* DAL Connection Types		*/

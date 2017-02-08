@@ -60,8 +60,8 @@
 #define	SZ_IMTITLE	128		/* image title string		*/
 #define	SZ_WCSBUF	320		/* WCS text buffer size		*/
 #define	SZ_FIFOBUF	4000		/* transfer size for FIFO i/o	*/
-#define	SZ_FNAME	256
-#define	SZ_LINE		256
+#define	SZ_FNAME	512
+#define	SZ_LINE		512
 
 /* Magic numbers. */
 #define DEF_PORT	5137	        /* default tcp/ip socket  	*/
@@ -79,7 +79,7 @@
 #define SZ_IOBUF        65536           /* max size data transfer       */
 #define SZ_FIFOBUF      4000
 #define SZ_WCSBUF       320             /* WCS text buffer size         */
-#define SZ_FNAME        256
+#define SZ_FNAME        512
 #define SZ_IMCURVAL     160
 
 #define MEMORY          01              /* frame buffer i/o             */

@@ -55,7 +55,7 @@ define	SZ_COMPLEX	4
 define	SZ_POINTER	2
 define	SZ_STRUCT	2
 define	SZ_USHORT	1
-define	SZ_FNAME	255		
+define	SZ_FNAME	511		
 define	SZ_PATHNAME	511		
 define	SZ_LINE		1023		
 define	SZ_COMMAND	2047		

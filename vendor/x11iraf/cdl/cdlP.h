@@ -4,9 +4,9 @@
 
 /*  Default values, size limiting values.
  */
-#define	SZ_FNAME		256	/* size of an image name	*/
-#define	SZ_NAME			256	/* size of an image name	*/
-#define	SZ_LINE			256	/* size of temp buffer		*/
+#define	SZ_FNAME		512	/* size of an image name	*/
+#define	SZ_NAME			512	/* size of an image name	*/
+#define	SZ_LINE			512	/* size of temp buffer		*/
 #define	SZ_IMTDEV		128	/* size of an IMTDEV string 	*/
 #define SZ_IMCURVAL     	160     /* cursor value str length 	*/
 #define SZ_OLD_WCSBUF   	320     /* old wcs buffer length   	*/

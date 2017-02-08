@@ -36,8 +36,8 @@
 #define	SZ_COLORBAR		11	/* height of colorbar in pixels	*/
 #define	SZ_FIFOBUF		4000	/* transfer size for FIFO i/o	*/
 
-#define	SZ_FNAME		256
-#define	SZ_LINE			256
+#define	SZ_FNAME		512
+#define	SZ_LINE			512
 #define	ERR			(-1)
 #define	OK			0
 #define	EOS			'\0'

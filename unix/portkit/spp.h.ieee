@@ -28,8 +28,8 @@
 /* Oft used constants.
  */
 #define	SZ_LINE		161
-#define	SZ_FNAME	63
-#define	SZ_PATHNAME	127
+#define	SZ_FNAME	511
+#define	SZ_PATHNAME	1023
 #define	EOS		'\0'
 #define	ERR		(-1)
 #define	OK		0

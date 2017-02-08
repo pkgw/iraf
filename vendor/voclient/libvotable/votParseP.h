@@ -20,7 +20,7 @@
 
 #define SZ_ATTRNAME             32      /** size of attribute name            */
 #define SZ_ATTRVAL              256     /** size of attribute value           */
-#define SZ_FNAME                255     /** size of filename+path             */
+#define SZ_FNAME                511     /** size of filename+path             */
 #define SZ_XMLTAG               1024    /** max length of entire XML tag      */
 #define SZ_LINE                 4096    /** handy size                        */
 

@@ -56,7 +56,7 @@ define	SZ_COMPLEX	4
 define	SZ_POINTER	2
 define	SZ_STRUCT	2
 define	SZ_USHORT	1
-define	SZ_FNAME	255		# max chars in a file name
+define	SZ_FNAME	511		# max chars in a file name
 define	SZ_PATHNAME	511		# OS dependent file names
 define	SZ_LINE		1023		# max chars in a line
 define	SZ_COMMAND	2047		# max size command block

@@ -36,9 +36,9 @@
 #define	SZ_CMDBUF	4096			/* maximum command buffer */
 #define	SZ_BUFFER	4096			/* library names, flags */
 #define	SZ_LIBBUF	4096			/* full library names */
-#define	SZ_FNAME	255
+#define	SZ_FNAME	511
 #define	SZ_PATHNAME	511
-#define	SZ_PKGENV	256
+#define	SZ_PKGENV	1024
 #define DEF_PKGENV	"iraf"
 
 #ifdef MACOSX

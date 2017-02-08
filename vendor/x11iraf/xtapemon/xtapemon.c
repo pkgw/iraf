@@ -40,7 +40,7 @@
 #define	MAXPORTS	2
 #define	ERR		(-1)
 #define	EOS		'\0'
-#define SZ_FNAME	256
+#define SZ_FNAME	512
 #define SZ_LINE		512
 #define SZ_MSGBUF	2048
 

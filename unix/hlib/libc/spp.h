@@ -31,7 +31,7 @@
 /* Oft used constants.
  */
 #define	SZ_LINE		1023
-#define	SZ_FNAME	255
+#define	SZ_FNAME	511
 #define	SZ_PATHNAME	511
 #define	SZ_COMMAND	2047
 #define	EOS		'\0'

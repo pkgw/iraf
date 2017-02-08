@@ -57,7 +57,7 @@
 #include "votParse.h"
 
 
-#define	SZ_FNAME	256		/* max size of a file name	*/
+#define	SZ_FNAME	512		/* max size of a file name	*/
 #define	SZ_URL		4096		/* max URL size			*/
 #define	MIN_THREADS	4		/* min no. simultaneous thread	*/
 #define	MAX_THREADS	64		/* max no. simultaneous threads */

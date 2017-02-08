@@ -7,7 +7,7 @@
 #define	P_DEBUG		0
 
 #define	BUFSIZE		4096
-#define	SZ_FNAME	256
+#define	SZ_FNAME	512
 #define	SZ_LINE		4096
 
 #define	TY_VOTABLE	1		/* Element types	*/

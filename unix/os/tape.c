@@ -59,7 +59,7 @@
 /* #define SUNOS41 */
 
 #define	SZ_COMMAND	512
-#define SZ_FNAME	256
+#define SZ_FNAME	512
 #define SZ_IOBUF	262144
 #define NREAD		64512
 #define	NWRITE		1024

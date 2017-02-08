@@ -54,7 +54,7 @@ define	CASE_INSENSITIVE	false	# is case ignored in OS filenames
 define	HOST_CASE		'L'	# case used [UL] if case insensitive
 define	UNDERSCORE_PERMITTED	true	# is _ permitted in filenames
 define	PERIOD_PERMITTED	true	# is . permitted in root
-define	MAX_ROOTLEN		128	# max chars in OS root filename
+define	MAX_ROOTLEN		512	# max chars in OS root filename
 define	MAX_EXTNLEN		32	# max chars in OS filename extension
 define	EXTN_DELIMITER		'.'	# character preceding extension
 define	LEADING_ALPHA_ONLY	false	# first char must be a letter
