@@ -13,6 +13,7 @@ export IRAFARCH="$1"
 prefix="$2"
 x11prefix="$3"
 export iraf=$(pwd)/
+export bin=${iraf}lib/
 export host=${iraf}unix/
 export hlib=${host}hlib/
 export PATH=$PATH:${host}"bin/"
@@ -25,6 +26,7 @@ export F2C=${host}f2c/src/f2c
 cat >build_settings.sh <<EOF
 export IRAFARCH="$IRAFARCH"
 export iraf="$iraf"
+export bin="$bin"
 export host="$host"
 export hlib="$hlib"
 export PATH="$PATH"
