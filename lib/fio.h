@@ -123,8 +123,8 @@ define	SZ_SPOOLBUF	4096		# def. initial size of a spool buffer
 
 # Filename Mapping definitions.
 
-define	SZ_VFNFN	127		# max size ROOT or EXTN in VFN
-define	SZ_OSDIR	255		# max chars in V_OSDIR field
+define	SZ_VFNFN	511		# max size ROOT or EXTN in VFN
+define	SZ_OSDIR	511		# max chars in V_OSDIR field
 
 define	VFN_READ	1		# VFN access modes for VFNOPEN
 define	VFN_WRITE	2

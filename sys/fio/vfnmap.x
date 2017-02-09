@@ -68,8 +68,8 @@ VFN is open to prevent corruption of the mapping file, failure to remove a
 file lock, or failure to close the mapping file.
 .endhelp ______________________________________________________________________
 
-define	SZ_VFN		255		# max chars in V_VFN field
-define	LEN_FN		128		# no. chars allocated to VFNFN field
+define	SZ_VFN		511		# max chars in V_VFN field
+define	LEN_FN		512		# no. chars allocated to VFNFN field
 define	SZ_FNPAIR	(LEN_FN*2)	# size of filename pair 2(+EOS+align)
 define	MAX_LONGFNAMES	100		# max filename pairs in FNMAP
 define	SZ_ZFD		4		# size of ".zfd" extension
@@ -85,7 +85,7 @@ define	V_UNMAP		4
 # VFD -- VFN descriptor structure.  Assumes an 80 char (or less) OSDIR field
 # and 35 char (or less) VFN, ROOT and EXTN fields (see fio.h).
 
-define	LEN_VFD		778
+define	LEN_VFD		2058
 
 define	V_MFD		Memi[$1]		# ptr to mapping file descriptor
 define	V_ACMODE	Memi[$1+1]		# access mode
@@ -94,9 +94,9 @@ define	V_LENROOT	Memi[$1+3]		# length of ROOT string
 define	V_LENEXTN	Memi[$1+4]		# length of EXTN string
 define	V_LONGROOT	Memi[$1+5]		# root field exceeds OS limit
 define	V_VFN		Memc[P2C($1+10)]	# VFN - ldir
-define	V_OSDIR		Memc[P2C($1+266)]	# OS directory
-define	V_ROOT		Memc[P2C($1+522)]	# OS root filename
-define	V_EXTN		Memc[P2C($1+650)]	# OS extension
+define	V_OSDIR		Memc[P2C($1+522)]	# OS directory
+define	V_ROOT		Memc[P2C($1+1034)]	# OS root filename
+define	V_EXTN		Memc[P2C($1+1546)]	# OS extension
 
 # MFD -- Mapping file descriptor structure.  An upper limit is placed on
 # the number of filename pairs in the descriptor because it is assumed that
